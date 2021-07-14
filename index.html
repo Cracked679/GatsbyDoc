@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create and Deploy Your First Gatsby Site</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div id="title">
+        <div>
+          <header>First Gatsby Site</header>
+        </div>
+        <div>
+          <label class="switch">
+            <i class="fas fa-adjust"></i>
+            <div>
+              <input class="btn-toggle" type="checkbox" />
+              <span class="slider round"></span>
+            </div>
+          </label>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a class="nav-link active" href="#Introduction">Introduction</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Create_a_Gatsby_site"
+            >Create a Gatsby site</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Run_your_site_locally"
+            >Run your site locally</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Setup_a_Github_repo_for_your_site"
+            >Setup a Github repo for your site</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Build_your_site_with_Gatsby_Cloud"
+            >Build your site with Gatsby Cloud</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Summary">Summary</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            Now that you’ve set up your computer with all the tools you’ll need,
+            it’s time to get started!
+          </p>
+          <p>
+            Over the course of this Tutorial, you’ll build and deploy your first
+            Gatsby site: a blog site with support for images and MDX! (If that
+            doesn’t mean anything to you now, that’s okay! It will by the time
+            you reach the end.) Here’s a
+            <a href="https://introworkshopexamplesitev3.gatsbyjs.io/"
+              >finished example</a
+            >
+            of the site you’ll build.
+          </p>
+          <p>
+            In this part of the Tutorial, you will go through the process of
+            creating the template for your blog site and deploying it online for
+            everyone to see.
+          </p>
+          <p>
+            The diagram below shows a high-level view of how all the pieces of
+            this process fit together. (Don’t worry if this doesn’t make sense
+            yet. You’ll learn about each step as you go.)
+          </p>
+          <img src="img/deployment-workflow.png" alt="deployment-workflow" />
+          <details>
+            <summary><em>Expand for detailed description</em></summary>
+            <p>
+              First, you write the code for your Gatsby site from your computer.
+              When you’re ready to make your changes live on the internet, you
+              go through the following steps:
+            </p>
+            <ol>
+              <li>
+                You push your changes from your computer to a remote repository
+                on GitHub. GitHub is an online platform for storing code for
+                your projects.
+              </li>
+              <li>
+                Gatsby Cloud watches your GitHub repository for changes. When it
+                sees your new changes, Gatsby Cloud builds your site from your
+                code on GitHub.
+              </li>
+              <li>
+                Gatsby Cloud hosts the finished version of your site at a unique
+                URL, which users can use to access the latest version of your
+                site.
+              </li>
+            </ol>
+          </details>
+        </article>
+      </section>
+      <section class="main-section" id="Create_a_Gatsby_site">
+        <header>Create a Gatsby site</header>
+        <article>
+          <p>
+            To create your first Gatsby site, you’re going to use a command from
+            the Gatsby command line interface (CLI): gatsby new. This command
+            brings up an interactive prompt that asks you questions about the
+            site you want to build. After you enter all the information, the CLI
+            uses your answers to automatically generate your new Gatsby site.
+          </p>
+          <img src="img/gatsby-new-cli.png" alt="gatsby-new-cli" />
+          <notes class="nc">
+            <summary><strong>Note : </strong></summary>
+            <p>
+              For this Tutorial, your Gatsby CLI should be v3 or newer. To check
+              what version you have installed, run the following command:
+              <code>gatsby --version</code>
+            </p>
+            <p>
+              Need to update? Run the command below to get the latest version of
+              the Gatsby CLI: <code>npm install -g gatsby-cli</code>
+            </p>
+          </notes>
+          <p>Let’s take a closer look at the process:</p>
+
+          <ol>
+            <li>
+              <p>
+                Open the command line, and use the cd command to change
+                directories into the folder where you want to create your new
+                Gatsby site. For example, if you wanted to create your new site
+                on your desktop, you might type:
+                <code>cd Desktop</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                Run the following command from the command line. This will start
+                up the interactive prompt to help you create a new Gatsby site.
+                <code>gatsby new</code>
+              </p>
+            </li>
+            <notes class="nc">
+              <p>
+                <strong>Having trouble with gatsby</strong> new? If you had
+                trouble globally installing gatsby-cli in Part 0, you can also
+                create a new site by running npm init gatsby from the command
+                line instead of gatsby new.
+              </p>
+            </notes>
+            <li>
+              <p>
+                When the prompt asks, “<strong
+                  >What would you like to call your site?</strong
+                >” enter a name for your site.
+                <code
+                  >What would you like to call your site? ✔ · My First Gatsby
+                  Site</code
+                >
+              </p>
+            </li>
+            <li>
+              <p>
+                When the prompt asks,<strong
+                  >“What would you like to name the folder where your site will
+                  be created?”</strong
+                >
+                use the default folder name, which will be based on the site
+                name you chose.
+                <code
+                  >What would you like to name the folder where your site will
+                  be created? ✔ Desktop/ my-first-gatsby-site</code
+                >
+              </p>
+            </li>
+            <li>
+              <p>
+                When the prompt asks,<strong>“Will you be using a CMS?”</strong>
+                select <strong>“No (or I’ll add it later)”</strong>.
+                <code
+                  >✔ Will you be using a CMS? · No (or I'll add it later)</code
+                >
+              </p>
+              <notes class="nc">
+                <p color="#808080">
+                  In the future, you can use these options to tell gatsby new
+                  what features you want to add to your site, and gatsby new
+                  will automatically configure them for you. It’s a much quicker
+                  way to set up new projects. But in this first site, you’ll set
+                  things up manually to learn about how Gatsby’s pieces fit
+                  together.
+                </p>
+              </notes>
+            </li>
+            <li>
+              <p>
+                When the prompt asks,<strong
+                  >“Would you like to install a styling system?”</strong
+                >
+                select <strong>“No (or I’ll add it later)”</strong> . (You’ll
+                add styles manually later.)
+                <code
+                  >✔ Would you like to install a styling system? · No (or I'll
+                  add it later)</code
+                >
+              </p>
+            </li>
+            <li>
+              <p>
+                When the prompt asks,<strong
+                  >“Would you like to install additional features with other
+                  plugins?”</strong
+                >
+                use the arrow and Space keys to select
+                <strong>“Build and host for free on Gatsby Cloud”</strong> ,
+                then use the arrow and Enter keys to select
+                <strong>“Done”</strong>. This tells gatsby new to add a plugin
+                called gatsby-plugin-gatsby-cloud to your site. Don’t worry
+                about the details of this just yet. You’ll learn about plugins
+                later on in the Tutorial. For now, all you need to know is that
+                this plugin will help your site work better when you deploy it
+                with Gatsby Cloud.
+              </p>
+            </li>
+            <li>
+              <p>
+                The prompt will show you a summary of what gatsby new will do.
+                It should look something like the output below.
+                <code
+                  >Thanks! Here's what we'll now do: <br />
+                  🛠 Create a new Gatsby site in the folder my-first-gatsby-site
+                  🔌 Install gatsby-plugin-gatsby-cloud ? Shall we do this?
+                  (Y/n) › Yes</code
+                >
+              </p>
+            </li>
+            <li>
+              <p>
+                When the prompt asks,<strong>“Shall we do this?”</strong> enter
+                <strong>“Y”</strong> . The gatsby new command will start
+                building your site. Your internet download speed will affect how
+                long this command takes to run. After it finishes, you should
+                see a message like this:
+                <notes class="nc" color="#4d4e53"
+                  ><font color="#4d4e53"
+                    >🎉 Your new Gatsby site My First Gatsby Site has been
+                    successfully created at ~/Desktop/my-first-gatsby-site.
+                    Start by going to the directory with
+                    <code>cd my-first-gatsby-site</code> <br />
+                    Start the local development server with
+                    <code>npm run develop</code> <br />
+                    See all commands at
+                    <code>https://www.gatsbyjs.com/docs/gatsby-cli/</code></font
+                  ></notes
+                >
+              </p>
+            </li>
+          </ol>
+          <p>
+            Congratulations, you’re now the owner of a brand new Gatsby site!
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Run_your_site_locally">
+        <header>Run your site locally</header>
+        <article>
+          <p>
+            So far, you’ve generated the code for your site, but what does it
+            actually look like in a web browser like Firefox or Google Chrome?
+            To find out, you’ll first need to start up your site’s local
+            development server.
+          </p>
+          <p>
+            The <strong>development server</strong> is a useful tool for when
+            you’re working on your site locally (from your own computer). When
+            your development server is running, you can use a web browser to
+            interact with your local copy of your site. That way, you can test
+            out changes to your code, to make sure they work before you actually
+            publish a new version of your site to the internet.
+          </p>
+          <p>To start up your development server, do the following:</p>
+          <ol>
+            <li>
+              <p>
+                In the command line, change into the directory you created for
+                your site: ~/Desktop
+                <code> cd my-first-gatsby-site </code>
+              </p>
+              <notes class="nc">
+                <p>
+                  <strong>Tip </strong> : Whenever you want to run any commands
+                  for your site, you need to be in the context for that site.
+                  That is, your command line needs to be pointed at the
+                  directory where your site’s code lives.
+                </p>
+              </notes>
+            </li>
+            <li>
+              <p>
+                From your site directory, start the development server by
+                running the following command: ~/Desktop/my-first-gatsby-site
+                <code> gatsby develop </code>
+              </p>
+              <notes class="nc">
+                <p>
+                  If you weren’t able to install the Gatsby command line
+                  interface globally, you can start your development server
+                  using the following command instead:
+                  <code>npm run develop</code>
+                </p>
+              </notes>
+            </li>
+            <li>
+              <p>
+                After a few moments, the command line should output a message
+                like the following, telling you your development server is ready
+                to go!
+                <code
+                  >You can now view my-first-gatsby-site in the browser. ⠀
+                  http://localhost:8000/ <br />
+                  View GraphiQL, an in-browser IDE, to explore your site's data
+                  and schema ⠀ http://localhost:8000/___graphql
+                </code>
+              </p>
+            </li>
+            <li>
+              <p>
+                Open your favorite web browser and navigate to
+                http://localhost:8000.
+              </p>
+              <img src="img/localhost-new-site.png" alt="" />
+            </li>
+          </ol>
+          <p>And there it is: your very first Gatsby site! 🎉</p>
+          <p>
+            You’ll be able to visit the site locally at http://localhost:8000/
+            for as long as your development server is running. (That’s the
+            process you started by running the gatsby develop command.) To stop
+            running that process (or to “stop running the development server”),
+            go back to your terminal window, hold down the “control” key, and
+            then hit “c” (ctrl-c). To start it again, run gatsby develop again!
+          </p>
+          <notes class="nc">
+            <p>
+              <strong>Note </strong> : If you are using VM setup like vagrant
+              and/or would like to listen on your local IP address, run gatsby
+              develop --host=0.0.0.0. Now, the development server listens on
+              both http://localhost and your local IP.
+            </p>
+          </notes>
+        </article>
+      </section>
+      <section class="main-section" id="Setup_a_Github_repo_for_your_site">
+        <header>Set up a GitHub repo for your site</header>
+        <article>
+          <p>
+            GitHub is a website that many developers use to back up and share
+            their code online. By uploading your code to GitHub, you’ll be able
+            to work on the same codebase from multiple computers. You’ll also be
+            able to use Gatsby Cloud to build and host your site.
+          </p>
+          <ol>
+            <li>
+              <p>
+                Each codebase on GitHub is stored in its own
+                <strong>repository</strong> (also called a “repo”, for short).
+                To create a new repository for your blog, click the plus icon in
+                the top-right corner of the navigation bar. Select “New
+                repository”.
+              </p>
+              <img src="img/new-repo-button.png" alt="New repo button img" />
+            </li>
+            <li>
+              <p>
+                When filling out the form for your new repo, you can make it
+                public or private. (This only affects the visibility of your
+                code on GitHub. Your site will still be visible to everyone once
+                you deploy it with Gatsby Cloud.) Leave the initialization
+                option checkboxes unchecked.
+              </p>
+              <img src="img/new-repo-options.png" alt="New repo options img" />
+            </li>
+            <li>
+              <p>
+                To push your existing code from your computer to your new GitHub
+                repository, enter the commands below in the command line. Be
+                sure to swap out YOUR_GITHUB_USERNAME for your actual username
+                and YOUR_GITHUB_REPO_NAME with the name you gave your GitHub
+                repo (like my-first-gatsby-site).
+              </p>
+            </li>
+            <code style="overflow-x: scroll">
+              <nobr
+                >git remote add origin
+                https://github.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_REPO_NAME.git</nobr
+              >
+              <nobr>git branch -M main</nobr>
+              <nobr>git push -u origin main</nobr>
+            </code>
+            <notes class="nc">
+              <strong>Using GitHub for the first time?</strong>
+              <p>
+                If you get an error about permissions when you try to push your
+                code to GitHub for the first time, you might need to set up an
+                SSH key for your GitHub account. This lets GitHub know that your
+                computer has permission to push code changes to your remote
+                repos.
+              </p>
+              <p>
+                For instructions on how to set up an SSH key, follow GitHub’s
+                guide:
+                <a
+                  href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh"
+                  >Connecting to GitHub with SSH.</a
+                >
+              </p>
+            </notes>
+          </ol>
+          <p>
+            Now you have a copy of your code saved on GitHub’s servers. In the
+            next step, you’ll connect your Gatsby Cloud account to the GitHub
+            repo you just created.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Build_your_site_with_Gatsby_Cloud">
+        <header>Build your site with Gatsby Cloud</header>
+        <article>
+          <p>
+            Gatsby Cloud is an infrastructure platform that is specifically
+            optimized for building, deploying, and hosting Gatsby sites. Once
+            you connect your Gatsby Cloud account to your GitHub repository,
+            Gatsby Cloud will build your site and make it available for others
+            on the internet to see.
+          </p>
+          <p>
+            To connect your code on GitHub to your Gatsby Cloud account, do the
+            following:
+          </p>
+          <ol>
+            <li>
+              <p>
+                Go to your
+                <a href="https://www.gatsbyjs.com/dashboard/"
+                  >Gatsby Cloud Dashboard.</a
+                >
+                Click on the <strong>“Add a site”</strong> button.
+              </p>
+              <img
+                src="img/01-create-a-site-button.png"
+                alt="create site button img"
+              />
+            </li>
+            <li>
+              <p>
+                The next few steps will help you add your site to Gatsby Cloud.
+                First, select
+                <strong>“Import from a Git repository”</strong> and click the
+                <strong>“Next”</strong> button at the bottom of the page.
+              </p>
+              <img
+                src="img/02-import-a-git-repo.png"
+                alt="import a git repo img"
+              />
+            </li>
+            <li>
+              <p>Select <strong>GitHub</strong> as the Git provider.</p>
+              <img
+                src="img/03-select-a-git-provider.png"
+                alt="select a git provider img"
+              />
+            </li>
+            <li>
+              <p>
+                If this is your first time connecting GitHub to Gatsby Cloud,
+                you’ll need to give Gatsby Cloud permission to access your
+                GitHub account. When asked,<strong
+                  >“Where should we host this new project?”</strong
+                >
+                click the <strong>“Select destination”</strong> button.
+              </p>
+              <img
+                src="img/04-select-destination.png"
+                alt="select destination img"
+              />
+            </li>
+            <li>
+              <p>
+                A new browser window should open, where GitHub will ask you
+                whether you want to give Gatsby Cloud permission to your GitHub
+                repositories. You can choose whether to give Gatsby Cloud access
+                to all of your GitHub repositories or to only the repository you
+                created (my-first-gatsby-site). Then click “Install”.
+              </p>
+              <img src="img/05-github-gatsby-cloud-permissions.png" alt="" />
+            </li>
+            <li>
+              <p>
+                Now, when you go back to the Gatsby Cloud window, the
+                <strong>“Select a Repository”</strong> dropdown should list your
+                GitHub repository. Select it.
+              </p>
+              <img src="img/06-select-repository.png" alt="select repo img" />
+            </li>
+            <li>
+              <p>
+                Once you select your repo, a few more input fields will show up.
+                These let you tell Gatsby Cloud where to look in your GitHub
+                repo for your Gatsby site. You can also change what Gatsby Cloud
+                will name your site.
+                <strong>Leave the default settings</strong> and click the
+                <strong>“Next”</strong> button.
+              </p>
+              <img src="img/07-add-site-details.png" alt="add details img" />
+            </li>
+            <li>
+              <p>
+                Gatsby Cloud will ask you if you want to add any optional
+                integrations to your site. For future projects, this might be
+                useful if you want to use a CMS. But for now, click the
+                <strong>“Skip this step”</strong> button.
+              </p>
+              <img
+                src="img/08-optional-integrations.png"
+                alt="optional integrations img"
+              />
+            </li>
+            <li>
+              <p>
+                Gatsby Cloud will also ask if you want to add any environment
+                variables. Skip this section, and click the
+                <strong>“Create site”</strong> button.
+              </p>
+              <img src="img/09-setup.png" alt="setup img" />
+            </li>
+            <li>
+              <p>
+                Now that your site has been created, you’ll be taken to a site
+                dashboard where you can see the status of your builds. Gatsby
+                Cloud should start building your site automatically. You’ll see
+                a link to your new site, which is automatically hosted on Gatsby
+                Cloud. You can share this link with anyone, and they’ll be able
+                to see your site online!
+              </p>
+              <img src="img/10-site-page.png" alt="site page img" />
+            </li>
+          </ol>
+          <p>You did it! Your Gatsby site is now online! 👏</p>
+          <p>
+            Every time you push a new change to the main branch of your GitHub
+            repo, Gatsby Cloud will see the changes and automatically start a
+            build for the new version of your site.
+          </p>
+          <notes class="nc" class="nc">
+            <p>
+              <strong>Tip:</strong> There will be a unique URL for each build
+              (like
+              https://build-49535320-b3ae-4761-bbeb-f8f7fa07e0fc.gtsb.io/), and
+              a URL that always has the latest build (like
+              my-first-gatsby-site-main.gatsbyjs.io). You’ll mostly want to
+              share the human-readable URL, so that people can always see the
+              most up-to-date version of your site. But in some cases (like when
+              you’re trying to debug a specific build of your site) it can be
+              helpful to use the unique build URL.
+            </p>
+          </notes>
+        </article>
+      </section>
+      <section class="main-section" id="Summary">
+        <header>Summary</header>
+        <article>
+          <p>
+            In this section, you learned how to create a new Gatsby site and
+            deploy it online using Gatsby Cloud. As a quick review, here’s the
+            diagram outlining the process:
+          </p>
+          <img src="img/deployment-workflow.png" alt="workflow img" />
+          <details>
+            <summary><em>Expand for detailed description</em></summary>
+            <p>
+              First, you write the code for your Gatsby site from your computer.
+              When you’re ready to make your changes live on the internet, you
+              go through the following steps:
+            </p>
+            <ol>
+              <li>
+                You push your changes from your computer to a remote repository
+                on GitHub. GitHub is an online platform for storing code for
+                your projects.
+              </li>
+              <li>
+                Gatsby Cloud watches your GitHub repository for changes. When it
+                sees your new changes, Gatsby Cloud builds your site from your
+                code on GitHub.
+              </li>
+              <li>
+                Gatsby Cloud hosts the finished version of your site at a unique
+                URL, which users can use to access the latest version of your
+                site.
+              </li>
+            </ol>
+          </details>
+          <notes class="nc">
+            <p>
+              <strong>Share Your Feedback!</strong>
+            </p>
+            <p>
+              Our goal is for this Tutorial to be helpful and easy to follow.
+              We’d love to hear your feedback about what you liked or didn’t
+              like about this part of the Tutorial.
+            </p>
+            <p>
+              Use the “Was this doc helpful to you?” form at the bottom of this
+              page to let us know what worked well and what we can improve.
+            </p>
+          </notes>
+        </article>
+      </section>
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <ul>
+            <li>
+              All the documentation in this page is taken from
+              <a
+                href="https://www.gatsbyjs.com/docs/tutorial/part-1/"
+                target="_blank"
+                >Gatsby Documentation</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+
+  <script src="script.js"></script>
+</html>
